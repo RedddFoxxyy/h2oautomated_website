@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-bb-_jth$jntue49$0+*t!03l_qa$c!z4uew1h&*_98#v*$_e41
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'termination-plc-unit-opposed.trycloudflare.com', '.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'termination-plc-unit-opposed.trycloudflare.com']
 
 
 # Application definition
@@ -75,10 +75,10 @@ WSGI_APPLICATION = 'h2oautomates_website.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -115,8 +115,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATICFILES_DIRS = [BASE_DIR/'static',]
-STATIC_ROOT = BASE_DIR/'staticfiles'
 
 STATIC_URL = 'static/'
 
