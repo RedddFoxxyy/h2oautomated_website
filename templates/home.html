@@ -51,8 +51,8 @@
             border: 2px solid #1E1E28;
             padding: 10px;
             background-color: #302D41; /* Default background */
-            width: 300px;
-            height: 200px;
+            width: 300px; /* Increased width */
+            height: 200px; /* Increased height */
             display: flex;
             flex-direction: column;
             border-radius: 10px;
@@ -84,71 +84,13 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background-color: transparent;
-            border: none;
+            background-color: #DDB6F2;
+            color: #1E1E28;
+            border: 2px solid #1E1E28;
+            padding: 10px;
+            border-radius: 10px;
             cursor: pointer;
-            outline: none;
-            width: 40px;
-            height: 40px;
-            transition: transform 0.3s;
-        }
-
-        .mode-icon {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .sun {
-            width: 24px;
-            height: 24px;
-            background-color: #F9E2AF;
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .sun::before, .sun::after {
-            content: '';
-            position: absolute;
-            background-color: #F9E2AF;
-            width: 4px;
-            height: 12px;
-            border-radius: 2px;
-        }
-
-        .sun::before {
-            transform: rotate(45deg);
-        }
-
-        .sun::after {
-            transform: rotate(-45deg);
-        }
-
-        .moon {
-            width: 24px;
-            height: 24px;
-            background-color: #C6AAE8;
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .moon::before {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            background-color: #1E1E28;
-            border-radius: 50%;
-            right: -6px;
-            top: -3px;
-        }
-
-        .rotate-icon {
-            transform: rotate(180deg);
+            transition: background 0.3s, border-color 0.3s;
         }
     </style>
     <title>Demo</title>
@@ -172,11 +114,7 @@
         </div>
     </div>
 
-    <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
-        <div class="mode-icon" id="modeIcon">
-            <div class="sun"></div> <!-- Default to sun icon -->
-        </div>
-    </button>
+    <div class="mode-toggle" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
 
     <script>
         let isDarkMode = true;
@@ -186,7 +124,7 @@
             const messageBox = document.getElementById('messageBox');
             const parentBox = document.querySelector('.parent-box');
             const arrowButtons = document.querySelectorAll('.arrow-button');
-            const modeIcon = document.getElementById('modeIcon');
+            const modeToggle = document.getElementById('modeToggle');
 
             if (isDarkMode) {
                 // Switch to Light Mode (Catppuccin Latte)
@@ -202,9 +140,10 @@
                     button.style.color = '#4C4F69';
                     button.style.borderColor = '#4C4F69';
                 });
-
-                // Switch to Moon icon
-                modeIcon.innerHTML = '<div class="moon"></div>';
+                modeToggle.textContent = 'Switch to Dark Mode';
+                modeToggle.style.backgroundColor = '#A6DA95'; // Latte green
+                modeToggle.style.borderColor = '#4C4F69';
+                modeToggle.style.color = '#4C4F69';
             } else {
                 // Switch to Dark Mode (Catppuccin Mocha)
                 body.style.background = 'linear-gradient(to bottom, #1E1E28, #1E1E28)';
@@ -219,14 +158,11 @@
                     button.style.color = '#1E1E28';
                     button.style.borderColor = '#1E1E28';
                 });
-
-                // Switch to Sun icon
-                modeIcon.innerHTML = '<div class="sun"></div>';
+                modeToggle.textContent = 'Switch to Light Mode';
+                modeToggle.style.backgroundColor = '#DDB6F2'; // Mocha purple
+                modeToggle.style.borderColor = '#1E1E28';
+                modeToggle.style.color = '#1E1E28';
             }
-
-            // Apply rotation animation
-            modeIcon.classList.add('rotate-icon');
-            setTimeout(() => modeIcon.classList.remove('rotate-icon'), 300);
 
             isDarkMode = !isDarkMode;
         }
