@@ -1,42 +1,127 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        html {
+        html, body {
             height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
         }
 
         body {
-            height: 100%;
-            margin: 0;
-            background: linear-gradient(to bottom, #1E1E28, #1E1E28); /* Default to dark mode */
-            color: #F5E0DC; /* Default text color */
+            background: linear-gradient(to bottom, #1E1E28, #1E1E28);
+            color: #F5E0DC;
             transition: background 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 2%;
+            box-sizing: border-box;
+        }
+
+        .video-container {
+            display: flex;
+            gap: 2%;
+            margin-bottom: 2%;
+            flex-wrap: wrap;
+            height: 60%;
+        }
+
+        .video-box {
+            flex: 1;
+            max-width: 40%;
+            min-width: 30%;
+            border: 0.2vw solid #1E1E28;
+            padding: 1%;
+            background-color: #302D41;
+            display: flex;
+            flex-direction: column;
+            border-radius: 1vw;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .video-heading {
+            color: #F5E0DC;
+            font-size: 1.1vw;
+            margin-bottom: 2%;
+            transition: color 0.3s;
+        }
+
+        .video-stream {
+            border: 0.2vw solid #1E1E28;
+            flex-grow: 1;
+            background-color: #1E1E28;
+            border-radius: 1vw;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .bottom-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 1.5%;
+            height: 35%;
+        }
+
+        .parent-box {
+            flex: 1;
+            max-width: 40%;
+            height: 100%;
+            border: 0.2vw solid #1E1E28;
+            padding: 1%;
+            background-color: #302D41;
+            display: flex;
+            flex-direction: column;
+            border-radius: 1vw;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .telemetry-heading {
+            font-size: 1.3vw; /* Adjust the size as needed */
+            color: #F5E0DC; /* Keep the color consistent */
+            transition: color 0.3s;
+        }
+
+        .message-box {
+            margin-top: 1%;
+            border: 0.2vw solid #1E1E28;
+            padding: 2%;
+            flex-grow: 1;
+            background-color: #1E1E28;
+            color: #F5E0DC;
+            border-radius: 1vw;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
         }
 
         .arrow-buttons-container {
-            position: fixed;
-            bottom: 100px;
-            right: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 2vh;
+            margin-left: 2%;
         }
 
         .arrow-button {
-            background-color: #DDB6F2; /* Default button color */
+            background-color: #DDB6F2;
             color: #1E1E28;
             cursor: pointer;
-            padding: 10px;
-            font-size: 48px;
-            width: 80px;
-            height: 80px;
+            padding: 1%;
+            font-size: 3vw;
+            width: 5vw;
+            height: 5vw;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid #1E1E28; /* Default button border color */
-            border-radius: 10px;
+            border: 0.2vw solid #1E1E28;
+            border-radius: 1vw;
             transition: transform 0.1s ease, background 0.3s, border-color 0.3s;
         }
 
@@ -44,53 +129,27 @@
             transform: scale(0.9);
         }
 
-        .parent-box {
-            position: fixed;
-            bottom: 40px;
-            left: 60px;
-            border: 2px solid #1E1E28;
-            padding: 10px;
-            background-color: #302D41; /* Default background */
-            width: 480px; /* Increased width */
-            height: 200px; /* Increased height */
-            display: flex;
-            flex-direction: column;
-            border-radius: 10px;
-            transition: background 0.3s, border-color 0.3s;
-        }
-
-        .message-box {
-            margin-top: 5px;
-            border: 2px solid #1E1E28;
-            padding: 10px;
-            flex-grow: 1;
-            background-color: #1E1E28; /* Default background */
-            color: #F5E0DC; /* Default text color */
-            border-radius: 10px;
-            transition: background 0.3s, color 0.3s, border-color 0.3s;
-        }
-
         .arrow-row {
             display: flex;
-            justify-content: space-between;
-            width: 260px;
-        }
-
-        .arrow-row .arrow-button {
-            margin: 0 10px;
+            justify-content: center;
+            gap: 5.1vw;
         }
 
         .mode-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 2vh;
+            right: 1vw;
             background-color: #DDB6F2;
             color: #1E1E28;
-            border: 2px solid #1E1E28;
-            padding: 10px;
-            border-radius: 10px;
+            max-width: 10%;
+            border: 0.2vw solid #1E1E28;
+            padding: 1%;
+            border-radius: 1vw;
             cursor: pointer;
             transition: background 0.3s, border-color 0.3s;
+            font-size: 1vw;
+            margin-bottom: 2%;
+            z-index: 1000;
         }
 
         .triangle-up, .triangle-down, .triangle-left, .triangle-right {
@@ -100,111 +159,130 @@
         }
 
         .triangle-up {
-            border-width: 0 16px 24px 16px;
+            border-width: 0 1vw 1.5vw 1vw;
             border-color: transparent transparent #1E1E28 transparent;
         }
 
         .triangle-down {
-            border-width: 24px 16px 0 16px;
+            border-width: 1.5vw 1vw 0 1vw;
             border-color: #1E1E28 transparent transparent transparent;
         }
 
         .triangle-left {
-            border-width: 16px 24px 16px 0;
+            border-width: 1vw 1.5vw 1vw 0;
             border-color: transparent #1E1E28 transparent transparent;
         }
 
         .triangle-right {
-            border-width: 16px 0 16px 24px;
+            border-width: 1vw 0 1vw 1.5vw;
             border-color: transparent transparent transparent #1E1E28;
         }
 
         .watermark {
             position: fixed;
-            bottom: 10px;
-            left: 10px;
-            color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
-            font-size: 14px;
-            font-family: Arial, sans-serif;
+            bottom: 1vh;
+            left: 1vw;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1vw;
             transition: color 0.3s;
         }
 
-        .video-container {
-            display: flex;
-            position: fixed;
-            top: 30px;
-            left: 60px; /* Shifted to the right by 50 pixels */
-            gap: 20px;
+        .no-select {
+            user-select: none; /* Standard syntax */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
         }
 
-        .video-box {
-            border: 2px solid #1E1E28;
-            padding: 10px;
-            background-color: #302D41; /* Default background */
-            width: 480px; /* Adjusted width */
-            height: 350px; /* Adjusted height */
-            display: flex;
-            flex-direction: column;
-            border-radius: 10px;
-            transition: background 0.3s, border-color 0.3s;
-        }
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column;
+                height: auto;
+            }
 
-        .video-heading {
-            color: #F5E0DC; /* Default text color */
-            font-size: 18px;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
+            .video-box {
+                width: 100%;
+                min-width: 100%;
+                height: 30vh;
+                margin-bottom: 2vh;
+            }
 
-        .video-stream {
-            border: 2px solid #1E1E28;
-            flex-grow: 1;
-            background-color: #1E1E28; /* Default background */
-            border-radius: 10px;
-            transition: background 0.3s, border-color 0.3s;
+            .bottom-container {
+                flex-direction: column;
+                align-items: stretch;
+                height: auto;
+            }
+
+            .parent-box {
+                max-width: 100%;
+                margin-bottom: 2vh;
+            }
+
+            .arrow-buttons-container {
+                align-self: center;
+                margin-left: 0;
+            }
+
+            .arrow-button {
+                font-size: 6vw;
+                width: 10vw;
+                height: 10vw;
+            }
+
+            .mode-toggle {
+                font-size: 3vw;
+            }
+
+            .watermark {
+                font-size: 3vw;
+            }
         }
     </style>
     <title>H2O_Automated</title>
 </head>
 <body>
-    <div class="video-container">
-        <div class="video-box">
-            <h2 class="video-heading">Video Feed 1</h2>
-            <div class="video-stream" id="videoStream1"></div>
+    <div class="mode-toggle no-select" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
+
+    <div class="content-wrapper">
+        <div class="video-container">
+            <div class="video-box">
+                <h2 class="video-heading">Video Feed 1</h2>
+                <div class="video-stream" id="videoStream1"></div>
+            </div>
+            <div class="video-box">
+                <h2 class="video-heading">Video Feed 2</h2>
+                <div class="video-stream" id="videoStream2"></div>
+            </div>
         </div>
-        <div class="video-box">
-            <h2 class="video-heading">Video Feed 2</h2>
-            <div class="video-stream" id="videoStream2"></div>
+
+        <div class="bottom-container">
+            <div class="parent-box">
+                <h2 class="telemetry-heading">Telemetry</h2>
+                <div class="message-box" id="messageBox"></div>
+            </div>
+
+            <div class="arrow-buttons-container">
+                <div class="arrow-row">
+                    <button class="arrow-button" id="upArrow" onclick="upArrowClicked()">
+                        <div class="triangle-up"></div>
+                    </button>
+                </div>
+                <div class="arrow-row">
+                    <button class="arrow-button" id="leftArrow" onclick="leftArrowClicked()">
+                        <div class="triangle-left"></div>
+                    </button>
+                    <button class="arrow-button" id="rightArrow" onclick="rightArrowClicked()">
+                        <div class="triangle-right"></div>
+                    </button>
+                </div>
+                <div class="arrow-row">
+                    <button class="arrow-button" id="downArrow" onclick="downArrowClicked()">
+                        <div class="triangle-down"></div>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="parent-box">
-        <h2 class="heading">Telemetry</h2>
-        <div class="message-box" id="messageBox"></div>
-    </div>
-
-    <div class="arrow-buttons-container">
-        <div class="arrow-row" style="justify-content: center;">
-            <button class="arrow-button" id="upArrow" onclick="upArrowClicked()">
-                <div class="triangle-up"></div>
-            </button>
-        </div>
-        <div class="arrow-row">
-            <button class="arrow-button" id="leftArrow" onclick="leftArrowClicked()">
-                <div class="triangle-left"></div>
-            </button>
-            <button class="arrow-button" id="rightArrow" onclick="rightArrowClicked()">
-                <div class="triangle-right"></div>
-            </button>
-        </div>
-        <div class="arrow-row" style="justify-content: center;">
-            <button class="arrow-button" id="downArrow" onclick="downArrowClicked()">
-                <div class="triangle-down"></div>
-            </button>
-        </div>
-    </div>
-
-    <div class="mode-toggle" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
 
     <div class="watermark">H2OAutomated</div>
 
@@ -221,6 +299,7 @@
             const videoBoxes = document.querySelectorAll('.video-box');
             const videoStreams = document.querySelectorAll('.video-stream');
             const videoHeadings = document.querySelectorAll('.video-heading');
+            const telemetryHeading = document.querySelectorAll('.telemetry-heading');
 
             if (isDarkMode) {
                 // Switch to Light Mode (Catppuccin Latte)
@@ -250,6 +329,9 @@
                     stream.style.borderColor = '#DC8A78';
                 });
                 videoHeadings.forEach(heading => {
+                    heading.style.color = '#4C4F69'; // Match video box text color in light mode
+                });
+                telemetryHeading.forEach(heading => {
                     heading.style.color = '#4C4F69'; // Match telemetry text color in light mode
                 });
             } else {
@@ -281,6 +363,9 @@
                 });
                 videoHeadings.forEach(heading => {
                     heading.style.color = '#F5E0DC'; // Default text color
+                });
+                telemetryHeading.forEach(heading => {
+                    heading.style.color = '#F5E0DC'; // Match telemetry text color in dark mode
                 });
             }
 

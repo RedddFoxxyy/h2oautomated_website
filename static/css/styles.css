@@ -1,0 +1,234 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    background: linear-gradient(to bottom, #1E1E28, #1E1E28);
+    color: #F5E0DC;
+    transition: background 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.video-container {
+    display: flex;
+    gap: 2%;
+    margin-bottom: 2%;
+    flex-wrap: wrap;
+    height: 60%;
+}
+
+.video-box {
+    flex: 1;
+    max-width: 40%;
+    min-width: 30%;
+    border: 0.2vw solid #1E1E28;
+    padding: 1%;
+    background-color: #302D41;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1vw;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.video-heading {
+    color: #F5E0DC;
+    font-size: 1.1vw;
+    margin-bottom: 2%;
+    transition: color 0.3s;
+}
+
+.video-stream {
+    border: 0.2vw solid #1E1E28;
+    flex-grow: 1;
+    background-color: #1E1E28;
+    border-radius: 1vw;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 1.5%;
+    height: 35%;
+}
+
+.parent-box {
+    flex: 1;
+    max-width: 40%;
+    height: 100%;
+    border: 0.2vw solid #1E1E28;
+    padding: 1%;
+    background-color: #302D41;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1vw;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.telemetry-heading {
+    font-size: 1.3vw; /* Adjust the size as needed */
+    color: #F5E0DC; /* Keep the color consistent */
+    transition: color 0.3s;
+}
+
+.message-box {
+    margin-top: 1%;
+    border: 0.2vw solid #1E1E28;
+    padding: 2%;
+    flex-grow: 1;
+    background-color: #1E1E28;
+    color: #F5E0DC;
+    border-radius: 1vw;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.arrow-buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+    margin-left: 2%;
+}
+
+.arrow-button {
+    background-color: #DDB6F2;
+    color: #1E1E28;
+    cursor: pointer;
+    padding: 1%;
+    font-size: 3vw;
+    width: 5vw;
+    height: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.2vw solid #1E1E28;
+    border-radius: 1vw;
+    transition: transform 0.1s ease, background 0.3s, border-color 0.3s;
+}
+
+.arrow-button:active {
+    transform: scale(0.9);
+}
+
+.arrow-row {
+    display: flex;
+    justify-content: center;
+    gap: 5.1vw;
+}
+
+.mode-toggle {
+    position: fixed;
+    top: 2vh;
+    right: 1vw;
+    background-color: #DDB6F2;
+    color: #1E1E28;
+    max-width: 10%;
+    border: 0.2vw solid #1E1E28;
+    padding: 1%;
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    font-size: 1vw;
+    margin-bottom: 2%;
+    z-index: 1000;
+}
+
+.triangle-up, .triangle-down, .triangle-left, .triangle-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.triangle-up {
+    border-width: 0 1vw 1.5vw 1vw;
+    border-color: transparent transparent #1E1E28 transparent;
+}
+
+.triangle-down {
+    border-width: 1.5vw 1vw 0 1vw;
+    border-color: #1E1E28 transparent transparent transparent;
+}
+
+.triangle-left {
+    border-width: 1vw 1.5vw 1vw 0;
+    border-color: transparent #1E1E28 transparent transparent;
+}
+
+.triangle-right {
+    border-width: 1vw 0 1vw 1.5vw;
+    border-color: transparent transparent transparent #1E1E28;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 1vh;
+    left: 1vw;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1vw;
+    transition: color 0.3s;
+}
+
+.no-select {
+    user-select: none; /* Standard syntax */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .video-box {
+        width: 100%;
+        min-width: 100%;
+        height: 30vh;
+        margin-bottom: 2vh;
+    }
+
+    .bottom-container {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+    }
+
+    .parent-box {
+        max-width: 100%;
+        margin-bottom: 2vh;
+    }
+
+    .arrow-buttons-container {
+        align-self: center;
+        margin-left: 0;
+    }
+
+    .arrow-button {
+        font-size: 6vw;
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .mode-toggle {
+        font-size: 3vw;
+    }
+
+    .watermark {
+        font-size: 3vw;
+    }
+}
