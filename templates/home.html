@@ -46,7 +46,7 @@
 
         .parent-box {
             position: fixed;
-            bottom: 20px;
+            bottom: 40px;
             left: 20px;
             border: 2px solid #1E1E28;
             padding: 10px;
@@ -60,7 +60,7 @@
         }
 
         .message-box {
-            margin-top: 10px;
+            margin-top: 5px;
             border: 2px solid #1E1E28;
             padding: 10px;
             flex-grow: 1;
@@ -92,6 +92,42 @@
             cursor: pointer;
             transition: background 0.3s, border-color 0.3s;
         }
+
+        .triangle-up, .triangle-down, .triangle-left, .triangle-right {
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .triangle-up {
+            border-width: 0 16px 24px 16px;
+            border-color: transparent transparent #1E1E28 transparent;
+        }
+
+        .triangle-down {
+            border-width: 24px 16px 0 16px;
+            border-color: #1E1E28 transparent transparent transparent;
+        }
+
+        .triangle-left {
+            border-width: 16px 24px 16px 0;
+            border-color: transparent #1E1E28 transparent transparent;
+        }
+
+        .triangle-right {
+            border-width: 16px 0 16px 24px;
+            border-color: transparent transparent transparent #1E1E28;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            transition: color 0.3s;
+        }
     </style>
     <title>Demo</title>
 </head>
@@ -103,18 +139,28 @@
 
     <div class="arrow-buttons-container">
         <div class="arrow-row" style="justify-content: center;">
-            <button class="arrow-button" id="upArrow" onclick="upArrowClicked()">↑</button>
+            <button class="arrow-button" id="upArrow" onclick="upArrowClicked()">
+                <div class="triangle-up"></div>
+            </button>
         </div>
         <div class="arrow-row">
-            <button class="arrow-button" id="leftArrow" onclick="leftArrowClicked()">←</button>
-            <button class="arrow-button" id="rightArrow" onclick="rightArrowClicked()">→</button>
+            <button class="arrow-button" id="leftArrow" onclick="leftArrowClicked()">
+                <div class="triangle-left"></div>
+            </button>
+            <button class="arrow-button" id="rightArrow" onclick="rightArrowClicked()">
+                <div class="triangle-right"></div>
+            </button>
         </div>
         <div class="arrow-row" style="justify-content: center;">
-            <button class="arrow-button" id="downArrow" onclick="downArrowClicked()">↓</button>
+            <button class="arrow-button" id="downArrow" onclick="downArrowClicked()">
+                <div class="triangle-down"></div>
+            </button>
         </div>
     </div>
 
     <div class="mode-toggle" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
+
+    <div class="watermark">H2OAutomated</div>
 
     <script>
         let isDarkMode = true;
@@ -125,6 +171,7 @@
             const parentBox = document.querySelector('.parent-box');
             const arrowButtons = document.querySelectorAll('.arrow-button');
             const modeToggle = document.getElementById('modeToggle');
+            const watermark = document.querySelector('.watermark');
 
             if (isDarkMode) {
                 // Switch to Light Mode (Catppuccin Latte)
@@ -144,6 +191,7 @@
                 modeToggle.style.backgroundColor = '#99d1db'; // Updated color
                 modeToggle.style.borderColor = '#4C4F69';
                 modeToggle.style.color = '#4C4F69';
+                watermark.style.color = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent black
             } else {
                 // Switch to Dark Mode (Catppuccin Mocha)
                 body.style.background = 'linear-gradient(to bottom, #1E1E28, #1E1E28)';
@@ -162,6 +210,7 @@
                 modeToggle.style.backgroundColor = '#DDB6F2'; // Mocha purple
                 modeToggle.style.borderColor = '#1E1E28';
                 modeToggle.style.color = '#1E1E28';
+                watermark.style.color = 'rgba(255, 255, 255, 0.5)'; // Semi-transparent white
             }
 
             isDarkMode = !isDarkMode;
