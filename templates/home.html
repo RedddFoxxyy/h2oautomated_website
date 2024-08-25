@@ -186,14 +186,14 @@
             font-size: 1vw;
             transition: color 0.3s;
         }
-        
+
         .no-select {
             user-select: none; /* Standard syntax */
             -webkit-user-select: none; /* Safari */
             -moz-user-select: none; /* Firefox */
             -ms-user-select: none; /* Internet Explorer/Edge */
         }
-        
+
         @media (max-width: 768px) {
             .video-container {
                 flex-direction: column;
@@ -299,6 +299,7 @@
             const videoBoxes = document.querySelectorAll('.video-box');
             const videoStreams = document.querySelectorAll('.video-stream');
             const videoHeadings = document.querySelectorAll('.video-heading');
+            const telemetryHeading = document.querySelectorAll('.telemetry-heading');
 
             if (isDarkMode) {
                 // Switch to Light Mode (Catppuccin Latte)
@@ -328,6 +329,9 @@
                     stream.style.borderColor = '#DC8A78';
                 });
                 videoHeadings.forEach(heading => {
+                    heading.style.color = '#4C4F69'; // Match video box text color in light mode
+                });
+                telemetryHeading.forEach(heading => {
                     heading.style.color = '#4C4F69'; // Match telemetry text color in light mode
                 });
             } else {
@@ -359,6 +363,9 @@
                 });
                 videoHeadings.forEach(heading => {
                     heading.style.color = '#F5E0DC'; // Default text color
+                });
+                telemetryHeading.forEach(heading => {
+                    heading.style.color = '#F5E0DC'; // Match telemetry text color in dark mode
                 });
             }
 
