@@ -83,7 +83,7 @@
             border-radius: 1vw;
             transition: background 0.3s, border-color 0.3s;
         }
-        
+
         .telemetry-heading {
             font-size: 1.3vw; /* Adjust the size as needed */
             color: #F5E0DC; /* Keep the color consistent */
@@ -138,15 +138,18 @@
         .mode-toggle {
             position: fixed;
             top: 2vh;
-            right: 2vw;
+            right: 1vw;
             background-color: #DDB6F2;
             color: #1E1E28;
+            max-width: 10%;
             border: 0.2vw solid #1E1E28;
             padding: 1%;
             border-radius: 1vw;
             cursor: pointer;
             transition: background 0.3s, border-color 0.3s;
             font-size: 1vw;
+            margin-bottom: 2%;
+            z-index: 1000;
         }
 
         .triangle-up, .triangle-down, .triangle-left, .triangle-right {
@@ -183,7 +186,14 @@
             font-size: 1vw;
             transition: color 0.3s;
         }
-
+        
+        .no-select {
+            user-select: none; /* Standard syntax */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+        }
+        
         @media (max-width: 768px) {
             .video-container {
                 flex-direction: column;
@@ -231,6 +241,8 @@
     <title>H2O_Automated</title>
 </head>
 <body>
+    <div class="mode-toggle no-select" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
+
     <div class="content-wrapper">
         <div class="video-container">
             <div class="video-box">
@@ -271,8 +283,6 @@
             </div>
         </div>
     </div>
-
-    <div class="mode-toggle" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
 
     <div class="watermark">H2OAutomated</div>
 
