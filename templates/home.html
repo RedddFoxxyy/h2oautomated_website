@@ -8,6 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            font-size: 16px;
         }
 
         body {
@@ -22,96 +23,105 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            padding: 20px;
+            padding: 2%;
             box-sizing: border-box;
         }
 
         .video-container {
             display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 2%;
+            margin-bottom: 2%;
             flex-wrap: wrap;
+            height: 60%;
         }
 
         .video-box {
             flex: 1;
-            min-width: 300px;
-            border: 2px solid #1E1E28;
-            padding: 10px;
+            max-width: 40%;
+            min-width: 30%;
+            border: 0.2vw solid #1E1E28;
+            padding: 1%;
             background-color: #302D41;
             display: flex;
             flex-direction: column;
-            border-radius: 10px;
+            border-radius: 1vw;
             transition: background 0.3s, border-color 0.3s;
         }
 
         .video-heading {
             color: #F5E0DC;
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 1.1vw;
+            margin-bottom: 2%;
             transition: color 0.3s;
         }
 
         .video-stream {
-            border: 2px solid #1E1E28;
+            border: 0.2vw solid #1E1E28;
             flex-grow: 1;
             background-color: #1E1E28;
-            border-radius: 10px;
+            border-radius: 1vw;
             transition: background 0.3s, border-color 0.3s;
-            min-height: 200px;
         }
 
         .bottom-container {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-top: auto;
+            margin-top: 1.5%;
+            height: 35%;
         }
 
         .parent-box {
             flex: 1;
-            border: 2px solid #1E1E28;
-            padding: 10px;
+            max-width: 40%;
+            height: 100%;
+            border: 0.2vw solid #1E1E28;
+            padding: 1%;
             background-color: #302D41;
             display: flex;
             flex-direction: column;
-            border-radius: 10px;
+            border-radius: 1vw;
             transition: background 0.3s, border-color 0.3s;
-            max-width: 480px;
+        }
+        
+        .telemetry-heading {
+            font-size: 1.3vw; /* Adjust the size as needed */
+            color: #F5E0DC; /* Keep the color consistent */
+            transition: color 0.3s;
         }
 
         .message-box {
-            margin-top: 5px;
-            border: 2px solid #1E1E28;
-            padding: 10px;
+            margin-top: 1%;
+            border: 0.2vw solid #1E1E28;
+            padding: 2%;
             flex-grow: 1;
             background-color: #1E1E28;
             color: #F5E0DC;
-            border-radius: 10px;
+            border-radius: 1vw;
             transition: background 0.3s, color 0.3s, border-color 0.3s;
-            min-height: 100px;
         }
 
         .arrow-buttons-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 2vh;
+            margin-left: 2%;
         }
 
         .arrow-button {
             background-color: #DDB6F2;
             color: #1E1E28;
             cursor: pointer;
-            padding: 10px;
-            font-size: 24px;
-            width: 50px;
-            height: 50px;
+            padding: 1%;
+            font-size: 3vw;
+            width: 5vw;
+            height: 5vw;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid #1E1E28;
-            border-radius: 10px;
+            border: 0.2vw solid #1E1E28;
+            border-radius: 1vw;
             transition: transform 0.1s ease, background 0.3s, border-color 0.3s;
         }
 
@@ -122,20 +132,21 @@
         .arrow-row {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 5.1vw;
         }
 
         .mode-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 2vh;
+            right: 2vw;
             background-color: #DDB6F2;
             color: #1E1E28;
-            border: 2px solid #1E1E28;
-            padding: 10px;
-            border-radius: 10px;
+            border: 0.2vw solid #1E1E28;
+            padding: 1%;
+            border-radius: 1vw;
             cursor: pointer;
             transition: background 0.3s, border-color 0.3s;
+            font-size: 1vw;
         }
 
         .triangle-up, .triangle-down, .triangle-left, .triangle-right {
@@ -145,51 +156,75 @@
         }
 
         .triangle-up {
-            border-width: 0 12px 18px 12px;
+            border-width: 0 1vw 1.5vw 1vw;
             border-color: transparent transparent #1E1E28 transparent;
         }
 
         .triangle-down {
-            border-width: 18px 12px 0 12px;
+            border-width: 1.5vw 1vw 0 1vw;
             border-color: #1E1E28 transparent transparent transparent;
         }
 
         .triangle-left {
-            border-width: 12px 18px 12px 0;
+            border-width: 1vw 1.5vw 1vw 0;
             border-color: transparent #1E1E28 transparent transparent;
         }
 
         .triangle-right {
-            border-width: 12px 0 12px 18px;
+            border-width: 1vw 0 1vw 1.5vw;
             border-color: transparent transparent transparent #1E1E28;
         }
 
         .watermark {
             position: fixed;
-            bottom: 10px;
-            left: 10px;
+            bottom: 1vh;
+            left: 1vw;
             color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
+            font-size: 1vw;
             transition: color 0.3s;
         }
 
         @media (max-width: 768px) {
             .video-container {
                 flex-direction: column;
+                height: auto;
+            }
+
+            .video-box {
+                width: 100%;
+                min-width: 100%;
+                height: 30vh;
+                margin-bottom: 2vh;
             }
 
             .bottom-container {
                 flex-direction: column;
                 align-items: stretch;
+                height: auto;
             }
 
             .parent-box {
-                margin-bottom: 20px;
-                max-width: none;
+                max-width: 100%;
+                margin-bottom: 2vh;
             }
 
             .arrow-buttons-container {
                 align-self: center;
+                margin-left: 0;
+            }
+
+            .arrow-button {
+                font-size: 6vw;
+                width: 10vw;
+                height: 10vw;
+            }
+
+            .mode-toggle {
+                font-size: 3vw;
+            }
+
+            .watermark {
+                font-size: 3vw;
             }
         }
     </style>
@@ -210,7 +245,7 @@
 
         <div class="bottom-container">
             <div class="parent-box">
-                <h2 class="heading">Telemetry</h2>
+                <h2 class="telemetry-heading">Telemetry</h2>
                 <div class="message-box" id="messageBox"></div>
             </div>
 
