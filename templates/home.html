@@ -1,41 +1,116 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        html {
+        html, body {
             height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            height: 100%;
-            margin: 0;
-            background: linear-gradient(to bottom, #1E1E28, #1E1E28); /* Default to dark mode */
-            color: #F5E0DC; /* Default text color */
+            background: linear-gradient(to bottom, #1E1E28, #1E1E28);
+            color: #F5E0DC;
             transition: background 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .video-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .video-box {
+            flex: 1;
+            min-width: 300px;
+            border: 2px solid #1E1E28;
+            padding: 10px;
+            background-color: #302D41;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .video-heading {
+            color: #F5E0DC;
+            font-size: 18px;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .video-stream {
+            border: 2px solid #1E1E28;
+            flex-grow: 1;
+            background-color: #1E1E28;
+            border-radius: 10px;
+            transition: background 0.3s, border-color 0.3s;
+            min-height: 200px;
+        }
+
+        .bottom-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+        }
+
+        .parent-box {
+            flex: 1;
+            border: 2px solid #1E1E28;
+            padding: 10px;
+            background-color: #302D41;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            transition: background 0.3s, border-color 0.3s;
+            max-width: 480px;
+        }
+
+        .message-box {
+            margin-top: 5px;
+            border: 2px solid #1E1E28;
+            padding: 10px;
+            flex-grow: 1;
+            background-color: #1E1E28;
+            color: #F5E0DC;
+            border-radius: 10px;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+            min-height: 100px;
         }
 
         .arrow-buttons-container {
-            position: fixed;
-            bottom: 100px;
-            right: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 10px;
         }
 
         .arrow-button {
-            background-color: #DDB6F2; /* Default button color */
+            background-color: #DDB6F2;
             color: #1E1E28;
             cursor: pointer;
             padding: 10px;
-            font-size: 48px;
-            width: 80px;
-            height: 80px;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid #1E1E28; /* Default button border color */
+            border: 2px solid #1E1E28;
             border-radius: 10px;
             transition: transform 0.1s ease, background 0.3s, border-color 0.3s;
         }
@@ -44,40 +119,10 @@
             transform: scale(0.9);
         }
 
-        .parent-box {
-            position: fixed;
-            bottom: 40px;
-            left: 60px;
-            border: 2px solid #1E1E28;
-            padding: 10px;
-            background-color: #302D41; /* Default background */
-            width: 480px; /* Increased width */
-            height: 200px; /* Increased height */
-            display: flex;
-            flex-direction: column;
-            border-radius: 10px;
-            transition: background 0.3s, border-color 0.3s;
-        }
-
-        .message-box {
-            margin-top: 5px;
-            border: 2px solid #1E1E28;
-            padding: 10px;
-            flex-grow: 1;
-            background-color: #1E1E28; /* Default background */
-            color: #F5E0DC; /* Default text color */
-            border-radius: 10px;
-            transition: background 0.3s, color 0.3s, border-color 0.3s;
-        }
-
         .arrow-row {
             display: flex;
-            justify-content: space-between;
-            width: 260px;
-        }
-
-        .arrow-row .arrow-button {
-            margin: 0 10px;
+            justify-content: center;
+            gap: 10px;
         }
 
         .mode-toggle {
@@ -100,22 +145,22 @@
         }
 
         .triangle-up {
-            border-width: 0 16px 24px 16px;
+            border-width: 0 12px 18px 12px;
             border-color: transparent transparent #1E1E28 transparent;
         }
 
         .triangle-down {
-            border-width: 24px 16px 0 16px;
+            border-width: 18px 12px 0 12px;
             border-color: #1E1E28 transparent transparent transparent;
         }
 
         .triangle-left {
-            border-width: 16px 24px 16px 0;
+            border-width: 12px 18px 12px 0;
             border-color: transparent #1E1E28 transparent transparent;
         }
 
         .triangle-right {
-            border-width: 16px 0 16px 24px;
+            border-width: 12px 0 12px 18px;
             border-color: transparent transparent transparent #1E1E28;
         }
 
@@ -123,84 +168,72 @@
             position: fixed;
             bottom: 10px;
             left: 10px;
-            color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+            color: rgba(255, 255, 255, 0.5);
             font-size: 14px;
-            font-family: Arial, sans-serif;
             transition: color 0.3s;
         }
 
-        .video-container {
-            display: flex;
-            position: fixed;
-            top: 30px;
-            left: 60px; /* Shifted to the right by 50 pixels */
-            gap: 20px;
-        }
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column;
+            }
 
-        .video-box {
-            border: 2px solid #1E1E28;
-            padding: 10px;
-            background-color: #302D41; /* Default background */
-            width: 480px; /* Adjusted width */
-            height: 350px; /* Adjusted height */
-            display: flex;
-            flex-direction: column;
-            border-radius: 10px;
-            transition: background 0.3s, border-color 0.3s;
-        }
+            .bottom-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
 
-        .video-heading {
-            color: #F5E0DC; /* Default text color */
-            font-size: 18px;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
+            .parent-box {
+                margin-bottom: 20px;
+                max-width: none;
+            }
 
-        .video-stream {
-            border: 2px solid #1E1E28;
-            flex-grow: 1;
-            background-color: #1E1E28; /* Default background */
-            border-radius: 10px;
-            transition: background 0.3s, border-color 0.3s;
+            .arrow-buttons-container {
+                align-self: center;
+            }
         }
     </style>
     <title>H2O_Automated</title>
 </head>
 <body>
-    <div class="video-container">
-        <div class="video-box">
-            <h2 class="video-heading">Video Feed 1</h2>
-            <div class="video-stream" id="videoStream1"></div>
+    <div class="content-wrapper">
+        <div class="video-container">
+            <div class="video-box">
+                <h2 class="video-heading">Video Feed 1</h2>
+                <div class="video-stream" id="videoStream1"></div>
+            </div>
+            <div class="video-box">
+                <h2 class="video-heading">Video Feed 2</h2>
+                <div class="video-stream" id="videoStream2"></div>
+            </div>
         </div>
-        <div class="video-box">
-            <h2 class="video-heading">Video Feed 2</h2>
-            <div class="video-stream" id="videoStream2"></div>
-        </div>
-    </div>
 
-    <div class="parent-box">
-        <h2 class="heading">Telemetry</h2>
-        <div class="message-box" id="messageBox"></div>
-    </div>
+        <div class="bottom-container">
+            <div class="parent-box">
+                <h2 class="heading">Telemetry</h2>
+                <div class="message-box" id="messageBox"></div>
+            </div>
 
-    <div class="arrow-buttons-container">
-        <div class="arrow-row" style="justify-content: center;">
-            <button class="arrow-button" id="upArrow" onclick="upArrowClicked()">
-                <div class="triangle-up"></div>
-            </button>
-        </div>
-        <div class="arrow-row">
-            <button class="arrow-button" id="leftArrow" onclick="leftArrowClicked()">
-                <div class="triangle-left"></div>
-            </button>
-            <button class="arrow-button" id="rightArrow" onclick="rightArrowClicked()">
-                <div class="triangle-right"></div>
-            </button>
-        </div>
-        <div class="arrow-row" style="justify-content: center;">
-            <button class="arrow-button" id="downArrow" onclick="downArrowClicked()">
-                <div class="triangle-down"></div>
-            </button>
+            <div class="arrow-buttons-container">
+                <div class="arrow-row">
+                    <button class="arrow-button" id="upArrow" onclick="upArrowClicked()">
+                        <div class="triangle-up"></div>
+                    </button>
+                </div>
+                <div class="arrow-row">
+                    <button class="arrow-button" id="leftArrow" onclick="leftArrowClicked()">
+                        <div class="triangle-left"></div>
+                    </button>
+                    <button class="arrow-button" id="rightArrow" onclick="rightArrowClicked()">
+                        <div class="triangle-right"></div>
+                    </button>
+                </div>
+                <div class="arrow-row">
+                    <button class="arrow-button" id="downArrow" onclick="downArrowClicked()">
+                        <div class="triangle-down"></div>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
