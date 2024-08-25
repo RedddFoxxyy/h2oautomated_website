@@ -128,10 +128,55 @@
             font-family: Arial, sans-serif;
             transition: color 0.3s;
         }
+
+        .video-container {
+            display: flex;
+            position: fixed;
+            top: 20px;
+            left: 70px; /* Shifted to the right by 50 pixels */
+            gap: 20px;
+        }
+
+        .video-box {
+            border: 2px solid #1E1E28;
+            padding: 10px;
+            background-color: #302D41; /* Default background */
+            width: 400px; /* Adjusted width */
+            height: 300px; /* Adjusted height */
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .video-heading {
+            color: #F5E0DC; /* Default text color */
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .video-stream {
+            border: 2px solid #1E1E28;
+            flex-grow: 1;
+            background-color: #1E1E28; /* Default background */
+            border-radius: 10px;
+            transition: background 0.3s, border-color 0.3s;
+        }
     </style>
     <title>Demo</title>
 </head>
 <body>
+    <div class="video-container">
+        <div class="video-box">
+            <h2 class="video-heading">Video Feed 1</h2>
+            <div class="video-stream" id="videoStream1"></div>
+        </div>
+        <div class="video-box">
+            <h2 class="video-heading">Video Feed 2</h2>
+            <div class="video-stream" id="videoStream2"></div>
+        </div>
+    </div>
+
     <div class="parent-box">
         <h2 class="heading">Telemetry</h2>
         <div class="message-box" id="messageBox"></div>
@@ -172,6 +217,9 @@
             const arrowButtons = document.querySelectorAll('.arrow-button');
             const modeToggle = document.getElementById('modeToggle');
             const watermark = document.querySelector('.watermark');
+            const videoBoxes = document.querySelectorAll('.video-box');
+            const videoStreams = document.querySelectorAll('.video-stream');
+            const videoHeadings = document.querySelectorAll('.video-heading');
 
             if (isDarkMode) {
                 // Switch to Light Mode (Catppuccin Latte)
@@ -192,6 +240,17 @@
                 modeToggle.style.borderColor = '#4C4F69';
                 modeToggle.style.color = '#4C4F69';
                 watermark.style.color = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent black
+                videoBoxes.forEach(box => {
+                    box.style.backgroundColor = '#FFFFFF';
+                    box.style.borderColor = '#DC8A78';
+                });
+                videoStreams.forEach(stream => {
+                    stream.style.backgroundColor = '#FFFFFF';
+                    stream.style.borderColor = '#DC8A78';
+                });
+                videoHeadings.forEach(heading => {
+                    heading.style.color = '#4C4F69'; // Match telemetry text color in light mode
+                });
             } else {
                 // Switch to Dark Mode (Catppuccin Mocha)
                 body.style.background = 'linear-gradient(to bottom, #1E1E28, #1E1E28)';
@@ -211,6 +270,17 @@
                 modeToggle.style.borderColor = '#1E1E28';
                 modeToggle.style.color = '#1E1E28';
                 watermark.style.color = 'rgba(255, 255, 255, 0.5)'; // Semi-transparent white
+                videoBoxes.forEach(box => {
+                    box.style.backgroundColor = '#302D41';
+                    box.style.borderColor = '#1E1E28';
+                });
+                videoStreams.forEach(stream => {
+                    stream.style.backgroundColor = '#1E1E28';
+                    stream.style.borderColor = '#1E1E28';
+                });
+                videoHeadings.forEach(heading => {
+                    heading.style.color = '#F5E0DC'; // Default text color
+                });
             }
 
             isDarkMode = !isDarkMode;
