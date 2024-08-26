@@ -202,7 +202,8 @@ body {
         font-size: 3vw;
         padding: 2vw;
         margin-top: 2vw;
-        margin-bottom: 4vw;
+        margin-bottom: 2vw;
+        margin-right: 4vw;
         max-width: none;
         width: auto;
     }
@@ -261,9 +262,9 @@ body {
     .watermark {
         position: static;
         text-align: left;
-        margin-left: 2vw;
+        margin-left: 3vw;
         margin-top: 4vw;
-        margin-bottom: 2vw;
-        font-size: 3vw;
+        margin-bottom: 3vw;
+        font-size: 3.5vw;
     }
 }
