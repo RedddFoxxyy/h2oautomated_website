@@ -249,6 +249,22 @@ body {
         width: 100%;
     }
 
+    .triangle-up {
+        border-width: 0 3vw 4.5vw 3vw;
+    }
+
+    .triangle-down {
+        border-width: 4.5vw 3vw 0 3vw;
+    }
+
+    .triangle-left {
+        border-width: 3vw 4.5vw 3vw 0;
+    }
+
+    .triangle-right {
+        border-width: 3vw 0 3vw 4.5vw;
+    }
+
     .arrow-button {
         font-size: 6vw;
         width: 15vw;
