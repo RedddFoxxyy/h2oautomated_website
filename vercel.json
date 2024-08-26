@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "h2oautomates_website/wsgi.py",
+      "src": "h2oautomated_website/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
     },
@@ -10,18 +10,18 @@
       "src": "build_files.sh",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "staticfiles_build"
+        "distDir": "staticfiles"
       }
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
-      "dest": "/staticfiles_build/$1"
+      "src": "controller/static/(.*)",
+      "dest": "/staticfiles/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "h2oautomates_website/wsgi.py"
+      "dest": "h2oautomated_website/wsgi.py"
     }
   ]
 }

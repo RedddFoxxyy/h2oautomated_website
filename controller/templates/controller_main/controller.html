@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'controller_main/css/controller.css' %}">
+    <title>H2O_Automated</title>
+</head>
+<body>
+    <div class="mode-toggle no-select" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
+
+    <div class="content-wrapper">
+        <div class="video-container">
+            <div class="video-box">
+                <h2 class="video-heading">Video Feed 1</h2>
+                <div class="video-stream" id="videoStream1"></div>
+            </div>
+            <div class="video-box">
+                <h2 class="video-heading">Video Feed 2</h2>
+                <div class="video-stream" id="videoStream2"></div>
+            </div>
+        </div>
+
+        <div class="bottom-container">
+            <div class="parent-box">
+                <h2 class="telemetry-heading">Telemetry</h2>
+                <div class="message-box" id="messageBox"></div>
+            </div>
+
+            <div class="arrow-buttons-container">
+                <div class="arrow-row">
+                    <button class="arrow-button" id="upArrow" onclick="upArrowClicked()">
+                        <div class="triangle-up"></div>
+                    </button>
+                </div>
+                <div class="arrow-row">
+                    <button class="arrow-button" id="leftArrow" onclick="leftArrowClicked()">
+                        <div class="triangle-left"></div>
+                    </button>
+                    <button class="arrow-button" id="rightArrow" onclick="rightArrowClicked()">
+                        <div class="triangle-right"></div>
+                    </button>
+                </div>
+                <div class="arrow-row">
+                    <button class="arrow-button" id="downArrow" onclick="downArrowClicked()">
+                        <div class="triangle-down"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="watermark">H2OAutomated</div>
+
+    <script src="{% static 'controller_main/js/controller.js' %}"></script>
+</body>
+</html>
