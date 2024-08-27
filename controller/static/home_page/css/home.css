@@ -91,7 +91,7 @@ body:not(.dark-mode) #modeIcon {
 
 .dropdown-menu {
     position: fixed;
-    top: 6.5vh;
+    top: 7vh;
     left: 1vw;
     background-color: #302D41;
     border: 0.2vw solid #1E1E28;
@@ -111,7 +111,7 @@ body:not(.dark-mode) #modeIcon {
 .dropdown-menu a {
     color: #F5E0DC;
     text-decoration: none;
-    font-size: 2vw;
+    font-size: 1.5vw;
     transition: color 0.3s;
 }
 
@@ -167,19 +167,19 @@ body:not(.dark-mode) #modeIcon {
     .dropdown-menu {
         position: static;
         align-self: flex-start;
-        margin-top: -2vh;
+        margin-top: -3vh;
         margin-left: 6vw;
         height: auto;
-        max-width: 24%;
+        width: auto;
     }
 
     .dropdown-menu a {
-        font-size: 4vw;
+        font-size: 6vw;
     }
 
     .content-wrapper {
         flex-direction: column;
-        margin-top: 4vh;
+        margin-top: 6vh;
         height: auto;
         padding: 4vw;
     }
