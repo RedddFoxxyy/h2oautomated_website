@@ -7,7 +7,14 @@
     <title>H2O_Automated</title>
 </head>
 <body>
-    <div class="mode-toggle no-select" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
+    <div class="header">
+        <a href="{% url 'home' %}" class="home-icon no-select">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+            </svg>
+        </a>
+        <div class="mode-toggle no-select" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
+    </div>
 
     <div class="content-wrapper">
         <div class="video-container">
@@ -50,7 +57,7 @@
         </div>
     </div>
 
-    <div class="watermark">H2OAutomated</div>
+    <div class="watermark">H2O Automated - team.h2omated@gmail.com</div>
 
     <script src="{% static 'controller_main/js/controller.js' %}"></script>
 </body>

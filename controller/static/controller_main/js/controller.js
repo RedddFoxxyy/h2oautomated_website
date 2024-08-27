@@ -11,6 +11,7 @@ function toggleMode() {
     const videoStreams = document.querySelectorAll('.video-stream');
     const videoHeadings = document.querySelectorAll('.video-heading');
     const telemetryHeading = document.querySelectorAll('.telemetry-heading');
+    const homeIcon = document.querySelector('.home-icon svg');
 
     if (isDarkMode) {
         // Switch to Light Mode (Catppuccin Latte)
@@ -45,6 +46,7 @@ function toggleMode() {
         telemetryHeading.forEach(heading => {
             heading.style.color = '#4C4F69'; // Match telemetry text color in light mode
         });
+        homeIcon.style.fill = '#4C4F69';
     } else {
         // Switch to Dark Mode (Catppuccin Mocha)
         body.style.background = 'linear-gradient(to bottom, #1E1E28, #1E1E28)';
@@ -78,6 +80,7 @@ function toggleMode() {
         telemetryHeading.forEach(heading => {
             heading.style.color = '#F5E0DC'; // Match telemetry text color in dark mode
         });
+        homeIcon.style.fill = '#F5E0DC';
     }
 
     isDarkMode = !isDarkMode;
