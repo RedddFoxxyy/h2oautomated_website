@@ -162,18 +162,26 @@ body {
     position: fixed;
     top: 2vh;
     right: 1vw;
-    background-color: #DDB6F2;
-    color: #1E1E28;
-    max-width: 10%;
-    border: 0.2vw solid #1E1E28;
-    padding: 1%;
-    border-radius: 1vw;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    transition: background 0.3s, border-color 0.3s;
-    font-size: 0.83vw;
-    font-family: 'JetBrains Mono', monospace;
-    margin-bottom: 2%;
     z-index: 1000;
+}
+
+.mode-icon {
+    width: 2vw;
+    height: 2vw;
+    transition: fill 0.3s;
+}
+
+/* Dark mode (default) */
+#modeIcon {
+    fill: #F5E0DC;
+}
+
+/* Light mode */
+body:not(.dark-mode) #modeIcon {
+    fill: #4C4F69;
 }
 
 .triangle-up, .triangle-down, .triangle-left, .triangle-right {
@@ -235,6 +243,11 @@ body {
         margin-right: 4vw;
         max-width: none;
         width: auto;
+    }
+
+    .mode-icon {
+        width: 7vw;
+        height: 7vw;
     }
 
     .home-icon {
