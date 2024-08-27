@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'home_page/css/home.css' %}">
+    <title>H2O Automated</title>
+</head>
+<body>
+    <div class="mode-toggle no-select" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
+
+    <div class="menu-toggle no-select" id="menuToggle" onclick="toggleMenu()">
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+    </div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="{% url 'controller' %}">Controller</a>
+    </div>
+
+    <div class="content-wrapper">
+        <h1 class="title">H2O Automated</h1>
+        <p class="description">Welcome to H2O Automated. This website is designed to control and monitor your automated systems.</p>
+    </div>
+
+    <div class="watermark">H2OAutomated</div>
+
+    <script src="{% static 'home_page/js/home.js' %}"></script>
+</body>
+</html>

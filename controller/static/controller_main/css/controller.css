@@ -134,6 +134,28 @@ body {
     gap: 5.1vw;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vw;
+    background-color: transparent;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.home-icon {
+    margin-right: 2vw;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.home-icon svg {
+    fill: #F5E0DC;
+    width: 2vw;
+    height: 2vw;
+    transition: fill 0.3s;
+}
+
 .mode-toggle {
     position: fixed;
     top: 2vh;
