@@ -152,9 +152,12 @@ body {
     }
 
     .dropdown-menu {
-        position: fixed;
-        top: 7vh;
-        left: 6vw;
+        position: static;
+        align-self: flex-start;
+        margin-top: -2vh;
+        margin-left: 6vw;
+        height: auto;
+        max-width: 24%;
     }
 
     .dropdown-menu a {
@@ -163,6 +166,7 @@ body {
 
     .content-wrapper {
         flex-direction: column;
+        margin-top: 4vh;
         height: auto;
         padding: 4vw;
     }
@@ -180,10 +184,9 @@ body {
     .watermark {
         position: fixed;
         bottom: 2vw;
-        text-align: left;
-        margin-left: 4vw;
-        margin-top: 4vw;
-        margin-bottom: 3vw;
-        font-size: 3.5vw;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 3vw;
     }
 }
