@@ -189,7 +189,7 @@ body {
     -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-@media (hover: none), (max-aspect-ratio: 1/1) {
+@media (max-aspect-ratio: 1/1) {
     .content-wrapper {
         flex-direction: column;
         height: auto;
