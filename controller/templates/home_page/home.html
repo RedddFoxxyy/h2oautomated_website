@@ -7,13 +7,15 @@
     <title>H2O Automated</title>
 </head>
 <body>
-    <div class="mode-toggle no-select" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
-
-    <div class="menu-toggle no-select" id="menuToggle" onclick="toggleMenu()">
-        <div class="menu-line"></div>
-        <div class="menu-line"></div>
-        <div class="menu-line"></div>
-    </div>
+    <div class="header">
+        <div class="menu-toggle no-select" id="menuToggle" onclick="toggleMenu()">
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+        </div>
+        
+        <div class="mode-toggle no-select" id="modeToggle" onclick="toggleMode()">Switch to Light Mode</div>
+    </div>    
 
     <div class="dropdown-menu" id="dropdownMenu">
         <a href="{% url 'controller' %}">Controller</a>
