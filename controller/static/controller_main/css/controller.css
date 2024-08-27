@@ -144,7 +144,9 @@ body {
 }
 
 .home-icon {
-    margin-right: 2vw;
+    position: fixed;
+    top: 2vh;
+    left: 1vw;
     cursor: pointer;
     transition: color 0.3s;
 }
@@ -233,6 +235,24 @@ body {
         margin-right: 4vw;
         max-width: none;
         width: auto;
+    }
+
+    .home-icon {
+        position: static;
+        align-self: flex-start;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+        margin-left: 4vw;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .home-icon svg {
+        fill: #F5E0DC;
+        width: 7vw;
+        height: 7vw;
+        max-width: none;
+        transition: fill 0.3s;
     }
 
     .video-container {
