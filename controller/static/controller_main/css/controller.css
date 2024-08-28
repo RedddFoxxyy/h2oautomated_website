@@ -136,17 +136,14 @@ body {
 
 .header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 1vw;
     background-color: transparent;
     transition: background 0.3s, border-color 0.3s;
 }
 
 .home-icon {
-    position: fixed;
-    top: 2vh;
-    left: 1vw;
     cursor: pointer;
     transition: color 0.3s;
 }
@@ -159,13 +156,9 @@ body {
 }
 
 .mode-toggle {
-    position: fixed;
-    top: 2vh;
-    right: 1vw;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1000;
 }
 
 .mode-icon {
@@ -240,32 +233,17 @@ body:not(.dark-mode) #modeIcon {
         padding: 2vw;
         margin-top: 2vw;
         margin-bottom: 2vw;
-        margin-right: 4vw;
         max-width: none;
         width: auto;
     }
 
-    .mode-icon {
-        width: 7vw;
-        height: 7vw;
+    .header {
+        padding: 4vw;
     }
 
-    .home-icon {
-        position: static;
-        align-self: flex-start;
-        margin-top: 2vw;
-        margin-bottom: 2vw;
-        margin-left: 4vw;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
-
-    .home-icon svg {
-        fill: #F5E0DC;
+    .home-icon svg, .mode-icon {
         width: 7vw;
         height: 7vw;
-        max-width: none;
-        transition: fill 0.3s;
     }
 
     .video-container {
