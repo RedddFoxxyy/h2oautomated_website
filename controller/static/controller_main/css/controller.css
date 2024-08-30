@@ -219,6 +219,29 @@ body:not(.dark-mode) #modeIcon {
     -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
+.additional-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1vh;
+    margin-bottom: 2vh;
+}
+
+.additional-button {
+    background-color: #DDB6F2;
+    color: #1E1E28;
+    cursor: pointer;
+    padding: 1vh;
+    font-size: 2vw;
+    width: 10vw;
+    border: 0.2vw solid #1E1E28;
+    border-radius: 1vw;
+    transition: transform 0.1s ease, background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.additional-button:active {
+    transform: scale(0.95);
+}
+
 @media (max-aspect-ratio: 1/1) {
     .content-wrapper {
         flex-direction: column;
@@ -320,5 +343,18 @@ body:not(.dark-mode) #modeIcon {
         margin-top: 4vw;
         margin-bottom: 3vw;
         font-size: 3.5vw;
+    }
+
+    .additional-buttons {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 4vw;
+    }
+
+    .additional-button {
+        font-size: 3vw;
+        width: 25vw;
+        padding: 2vw;
     }
 }

@@ -4,13 +4,26 @@ function initializeModeToggle() {
     applyMode();
 }
 
-document.addEventListener('DOMContentLoaded', initializeModeToggle);
+document.addEventListener('DOMContentLoaded', function() {
+    initializeModeToggle();
+    
+    document.getElementById('loadButton').addEventListener('click', toggleLoadButton);
+    
+    document.getElementById('resetButton').addEventListener('click', function() {
+        document.getElementById('messageBox').innerText = "Robot Reset.";
+    });
+    
+    document.getElementById('conveyorButton').addEventListener('click', function() {
+        document.getElementById('messageBox').innerText = "Conveyor Toggled";
+    });
+});
 
 function applyMode() {
     const body = document.body;
     const messageBox = document.getElementById('messageBox');
     const parentBox = document.querySelector('.parent-box');
     const arrowButtons = document.querySelectorAll('.arrow-button');
+    const additionalButtons = document.querySelectorAll('.additional-button');
     const modeToggle = document.getElementById('modeToggle');
     const modeIcon = document.getElementById('modeIcon');
     const watermark = document.querySelector('.watermark');
@@ -28,6 +41,11 @@ function applyMode() {
         messageBox.style.borderColor = '#DC8A78';
         parentBox.style.backgroundColor = '#FFFFFF';
         parentBox.style.borderColor = '#DC8A78';
+        additionalButtons.forEach(button => {
+            button.style.backgroundColor = '#99d1db';
+            button.style.color = '#4C4F69';
+            button.style.borderColor = '#4C4F69';
+        });
         arrowButtons.forEach(button => {
             button.style.backgroundColor = '#99d1db';
             button.style.color = '#4C4F69';
@@ -61,6 +79,11 @@ function applyMode() {
         messageBox.style.borderColor = '#1E1E28';
         parentBox.style.backgroundColor = '#302D41';
         parentBox.style.borderColor = '#1E1E28';
+        additionalButtons.forEach(button => {
+            button.style.backgroundColor = '#DDB6F2';
+            button.style.color = '#1E1E28';
+            button.style.borderColor = '#1E1E28';
+        });
         arrowButtons.forEach(button => {
             button.style.backgroundColor = '#DDB6F2';
             button.style.color = '#1E1E28';
@@ -109,6 +132,15 @@ function leftArrowClicked() {
 
 function rightArrowClicked() {
     document.getElementById('messageBox').innerText = "Right led on";
+}
+
+function toggleLoadButton() {
+    const loadButton = document.getElementById('loadButton');
+    if (loadButton.textContent === 'Load') {
+        loadButton.textContent = 'Unload';
+    } else {
+        loadButton.textContent = 'Load';
+    }
 }
 
 document.addEventListener('keydown', function(event) {
