@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-import paho.mqtt.client as mqtt
+import requests
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from .commands import command_queue
 
 # Create your views here.
 def home(request):
@@ -11,44 +13,17 @@ def home(request):
 def controller(request):
     return render(request, 'controller_main/controller.html')
 
-# MQTT configuration
-MQTT_BROKER = "broker.hivemq.com"  # Replace with your broker address
-MQTT_PORT = 1883
-MQTT_TOPIC = "raspberrypi/commands"  # Choose a unique topic
-
-def on_connect(client, userdata, flags, rc):
-    print(f"Connected with result code {rc}")
-
-def on_publish(client, userdata, mid):
-    print(f"Message {mid} published")
-
-# Create a client instance
-client = mqtt.Client()
-client.on_connect = on_connect
-client.on_publish = on_publish
-
-# Connect to the broker
-client.connect(MQTT_BROKER, MQTT_PORT, 60)
-
-# Start the loop
-client.loop_start()
-
-def send_to_device(input_value):
-    message = json.dumps({"command": input_value})
-    result = client.publish(MQTT_TOPIC, message)
-    status = result[0]
-    if status == 0:
-        print(f"Message sent to topic {MQTT_TOPIC}")
-    else:
-        print(f"Failed to send message to topic {MQTT_TOPIC}")
-
 @csrf_exempt
+@require_http_methods(["POST"])
 def send_input(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        input_value = data.get('input')
-        
-        send_to_device(input_value)
-        
-        return JsonResponse({'status': 'success', 'message': f'Input {input_value} sent to device'})
-    return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    data = json.loads(request.body)
+    input_value = data.get('input')
+    if input_value:
+        command_queue.add_command(input_value)
+        return JsonResponse({'status': 'success', 'message': f'Input {input_value} queued for device'})
+    return JsonResponse({'status': 'error', 'message': 'No input provided'}, status=400)
+
+@require_http_methods(["GET"])
+def get_commands(request):
+    commands = command_queue.get_commands()
+    return JsonResponse({'commands': commands})

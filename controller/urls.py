@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path("controller", views.controller, name="controller"),
-    path('send_input/', views.send_input, name='send_input'),
+    path('get_commands/', views.get_commands, name='get_commands'),
 ]
