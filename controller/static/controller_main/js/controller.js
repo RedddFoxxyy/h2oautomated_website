@@ -8,14 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeModeToggle();
     
     document.getElementById('loadButton').addEventListener('click', toggleLoadButton);
-    
-    document.getElementById('resetButton').addEventListener('click', function() {
-        document.getElementById('messageBox').innerText = "Robot Reset.";
-    });
-    
-    document.getElementById('conveyorButton').addEventListener('click', function() {
-        document.getElementById('messageBox').innerText = "Conveyor Toggled";
-    });
 });
 
 function applyMode() {
@@ -118,44 +110,75 @@ function toggleMode() {
     applyMode();
 }
 
-function upArrowClicked() {
-    document.getElementById('messageBox').innerText = "Forward led on";
+function updateRobotMovement(movement) {
+    document.getElementById('robotMovement').textContent = `Robot movement: ${movement}`;
 }
 
-function downArrowClicked() {
-    document.getElementById('messageBox').innerText = "Backward led on";
+function updateRobotStatus(status) {
+    document.getElementById('robotStatus').textContent = `Robot Status: ${status}`;
 }
 
-function leftArrowClicked() {
-    document.getElementById('messageBox').innerText = "Left led on";
+function updateLoadingStatus(status) {
+    document.getElementById('loadingStatus').textContent = `Loading Status: ${status}`;
 }
 
-function rightArrowClicked() {
-    document.getElementById('messageBox').innerText = "Right led on";
+function resetRobot() {
+    updateRobotStatus("Reset");
+    
+    setTimeout(() => {
+        updateRobotStatus("-");
+    }, 4000);
 }
+
+function toggleConveyor() {
+    updateRobotStatus("Conveyor Toggled");
+    
+    setTimeout(() => {
+        updateRobotStatus("-");
+    }, 4000);
+}
+
+// Update the event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    initializeModeToggle();
+    
+    document.getElementById('loadButton').addEventListener('click', toggleLoadButton);
+    
+    document.getElementById('resetButton').addEventListener('click', resetRobot);
+    
+    document.getElementById('conveyorButton').addEventListener('click', toggleConveyor);
+
+    document.getElementById('upArrow').addEventListener('click', () => updateRobotMovement("Forward"));
+    document.getElementById('downArrow').addEventListener('click', () => updateRobotMovement("Backward"));
+    document.getElementById('leftArrow').addEventListener('click', () => updateRobotMovement("Left"));
+    document.getElementById('rightArrow').addEventListener('click', () => updateRobotMovement("Right"));
+});
 
 function toggleLoadButton() {
     const loadButton = document.getElementById('loadButton');
     if (loadButton.textContent === 'Load') {
         loadButton.textContent = 'Unload';
+        updateLoadingStatus("Loading");
     } else {
         loadButton.textContent = 'Load';
+        updateLoadingStatus("Unloading");
     }
 }
 
+// Update the keyboard event listener
 document.addEventListener('keydown', function(event) {
     switch (event.key) {
         case 'ArrowUp':
-            document.getElementById('upArrow').click();
+            updateRobotMovement("Forward");
             break;
         case 'ArrowDown':
-            document.getElementById('downArrow').click();
+            updateRobotMovement("Backward");
             break;
         case 'ArrowLeft':
-            document.getElementById('leftArrow').click();
+            updateRobotMovement("Left");
             break;
         case 'ArrowRight':
-            document.getElementById('rightArrow').click();
+            updateRobotMovement("Right");
             break;
     }
 });
