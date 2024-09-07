@@ -8,14 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeModeToggle();
     
     document.getElementById('loadButton').addEventListener('click', toggleLoadButton);
-    
-    document.getElementById('resetButton').addEventListener('click', function() {
-        document.getElementById('messageBox').innerText = "Robot Reset.";
-    });
-    
-    document.getElementById('conveyorButton').addEventListener('click', function() {
-        document.getElementById('messageBox').innerText = "Conveyor Toggled";
-    });
 });
 
 function applyMode() {
