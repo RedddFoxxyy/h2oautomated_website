@@ -98,6 +98,16 @@ body {
     color: #F5E0DC;
     border-radius: 1vw;
     transition: background 0.3s, color 0.3s, border-color 0.3s;
+    overflow-y: auto; /* Add scrollbar if content overflows */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.message-box p {
+    margin: 10px 0;
+    text-align: left;
+    font-size: 1vw;
 }
 
 .arrow-buttons-container {
@@ -312,6 +322,10 @@ body:not(.dark-mode) #modeIcon {
         max-width: 100%;
         min-height: 22vh;
         margin-bottom: 0;
+    }
+
+    .message-box p {
+        font-size: 2.8vw; /* Adjust font size to fit better */
     }
 
     .telemetry-heading {
