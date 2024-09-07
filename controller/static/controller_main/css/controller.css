@@ -144,7 +144,11 @@ body {
 }
 
 .home-icon {
+    position: fixed;
+    top: 2vh;
+    left: 1vw;
     cursor: pointer;
+    z-index: 1000;
     transition: color 0.3s;
 }
 
@@ -156,9 +160,13 @@ body {
 }
 
 .mode-toggle {
+    position: fixed;
+    top: 2vh;
+    right: 1vw;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .mode-icon {
@@ -256,12 +264,18 @@ body:not(.dark-mode) #modeIcon {
         padding: 2vw;
         margin-top: 2vw;
         margin-bottom: 2vw;
+        margin-right: 4vw;
         max-width: none;
         width: auto;
     }
 
-    .header {
-        padding: 4vw;
+    .home-icon {
+        position: static;
+        align-self: flex-start;
+        padding: 2vw;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+        margin-left: 4vw;
     }
 
     .home-icon svg, .mode-icon {

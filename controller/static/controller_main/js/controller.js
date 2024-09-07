@@ -118,10 +118,6 @@ function toggleMode() {
     applyMode();
 }
 
-function goToHome() {
-    window.location.href = "{% url 'home' %}";
-}
-
 function upArrowClicked() {
     document.getElementById('messageBox').innerText = "Forward led on";
 }
