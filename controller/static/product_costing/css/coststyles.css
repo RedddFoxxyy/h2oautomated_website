@@ -1,0 +1,41 @@
+.title {
+    text-align: center;
+    color: #DDB6F2;}
+
+body {
+    margin:40px;
+    background: linear-gradient(to bottom, #1E1E28, #1E1E28);
+    color: #F5E0DC;
+    font-family: 'JetBrains Mono', monospace;}
+
+th,td {
+    border:1px solid #d8adf0;
+    filter: brightness(95%);
+    padding-top: 10px;
+    padding-bottom: 10px;}
+
+td {
+    padding-left: 30px;}
+
+.mode-toggle {
+    position: fixed;
+    top: 2vh;
+    right: 1vw;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;}
+
+.mode-icon {
+    width: 2vw;
+    height: 2vw;
+    fill: #F5E0DC;
+    transition: fill 0.3s;}
+
+.watermark {
+    position: fixed;
+    bottom: 1vh;
+    left: 1vw;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1vw;
+    transition: color 0.3s;}

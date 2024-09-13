@@ -6,3 +6,6 @@ def home(request):
 
 def controller(request):
     return render(request, 'controller_main/controller.html')
+
+def price_list(request):
+    return render(request, 'product_costing/product_costing.html')
